@@ -1,13 +1,14 @@
 
 <!doctype html>
 <html lang="en">
+{% load static %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Blog</title>
+    <title>{{ post.blog_title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -36,22 +37,26 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light font-italic" style="background:#F2B993">
-        <a class="navbar-brand" href="#">My Awersome Blog</a>
+        <a class="navbar-brand" href="{% url 'home' %}">My Awersome Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="#">About Me</a>
-            <a class="nav-item nav-link" href="#">Facebook</a>
-            <a class="nav-item nav-link active" href="#">Bloog</a>
+            <a class="nav-item nav-link" href="{% static 'about_me.txt' %}">About Me</a>
+            <a class="nav-item nav-link" href="https://www.facebook.com/profile.php?id=100007942083631" target="_blank">Facebook</a>
+            <a class="nav-item nav-link" href="{% url 'showblog' %}">Blog</a>
           </div>
         </div>
       </nav>
     </header>
 
     <main role="main" class="pl-3">
-      <h1>Fist Post<h1/>
+        <h2>{{ post.blog_title }}</h2><br/>
+          <img src="{{ post.blog_image.url }}" height="600" width="auto" class="img_fluid"/><br/>
+          <p>{{ post.blog_text }}</p>
+          <p>{{ post.blog_date }}</p>
+        <br/><br/>
 
     </main>
 

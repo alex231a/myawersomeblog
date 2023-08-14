@@ -1,6 +1,7 @@
 
 <!doctype html>
 <html lang="en">
+{% load static %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,15 +37,15 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light font-italic" style="background:#F2B993">
-        <a class="navbar-brand" href="#">My Awersome Blog</a>
+        <a class="navbar-brand" href="{% url 'home' %}">My Awersome Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="#">About Me</a>
-            <a class="nav-item nav-link" href="#">Facebook</a>
-            <a class="nav-item nav-link active" href="#">Bloog</a>
+            <a class="nav-item nav-link" href="{% static 'about_me.txt' %}">About Me</a>
+            <a class="nav-item nav-link" href="https://www.facebook.com/profile.php?id=100007942083631" target="_blank">Facebook</a>
+            <a class="nav-item nav-link" href="{% url 'showblog' %}">Blog</a>
           </div>
         </div>
       </nav>
@@ -53,7 +54,7 @@
     <main role="main" class="pl-3">
       <h1 class="pt-4 pb-5">Recent Posts</h1>
         {% for post in posts.all %}
-        <a href=""><h2>{{ post.blog_title }}</h2><br/></a>
+        <a href="{% url 'specific_post' post.id %}"><h2>{{ post.blog_title }}</h2><br/></a>
           <img src="{{ post.blog_image.url }}" height="300" width="auto" class="img_fluid"/><br/>
           <p>{{ post.get_summary }}</p>
           <p>{{ post.blog_date }}</p>

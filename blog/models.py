@@ -9,3 +9,6 @@ class Post(models.Model):
 
     def get_summary(self):
         return self.blog_text[:70]
+
+    def __str__(self):
+        return self.blog_title
