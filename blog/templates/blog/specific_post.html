@@ -51,14 +51,7 @@
     </header>
 
     <main role="main" class="pl-3">
-      <h1 class="pt-4 pb-5">Recent Posts</h1>
-        {% for post in posts.all %}
-        <a href=""><h2>{{ post.blog_title }}</h2><br/></a>
-          <img src="{{ post.blog_image.url }}" height="300" width="auto" class="img_fluid"/><br/>
-          <p>{{ post.get_summary }}</p>
-          <p>{{ post.blog_date }}</p>
-        <br/><br/>
-        {% endfor %}
+      <h1>Fist Post<h1/>
 
     </main>
 
